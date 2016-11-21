@@ -26,11 +26,11 @@ import domain.FoodManager;
 
 /**
  * The JAX-RS service, deployable to GlassFish, which tracks food.
- * 
+ *
  * @author William Wen
  *
  */
-@Path("foods")
+@Path("/foods")
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 @Stateless
@@ -50,6 +50,11 @@ public class FoodRestService {
 
 	@PUT
 	public Response update(Food food) {
+		if (food == null) {
+			throw new BadRequestException();
+		}
+		FoodManager.delete(food.getName());
+		FoodManager.add(food);
 		return Response.ok().build();
 	}
 
@@ -71,7 +76,7 @@ public class FoodRestService {
 	}
 
 	@DELETE
-	@Path("name")
+	@Path("{name}")
 	public Response delete(@PathParam("name") String name) {
 		FoodManager.delete(name);
 		return Response.noContent().build();

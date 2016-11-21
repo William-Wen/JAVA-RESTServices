@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlRootElement
 @XmlSeeAlso(Food.class)
-public class FoodList extends ArrayList<Food>{
+public class FoodList extends ArrayList<Food> {
 
 	/**
 	 *
@@ -19,6 +19,7 @@ public class FoodList extends ArrayList<Food>{
 
 	public FoodList() {
 		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public FoodList(Collection<? extends Food> c) {
@@ -26,8 +27,7 @@ public class FoodList extends ArrayList<Food>{
 		// TODO Auto-generated constructor stub
 	}
 
-
-	@XmlElement(name="Foods")
+	@XmlElement(name = "Foods")
 	public List<Food> getFoods() {
 		return this;
 	}
@@ -35,6 +35,5 @@ public class FoodList extends ArrayList<Food>{
 	public void addFoods(List<Food> foods) {
 		this.addAll(foods);
 	}
-
 
 }
