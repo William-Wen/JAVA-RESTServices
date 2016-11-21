@@ -1,0 +1,35 @@
+
+~~~~~~~~~~~~
+Create a Food
+~~~~~~~~~~~~
+curl -X POST --data-binary "<food><calories>40</calories><name>turnip</name><servingSize>3 slices</servingSize></food>" -H "Content-Type: application/xml" http://localhost:8080/RESTServices/rs/foods -v
+
+curl -X POST --data-binary "{\"calories\":150,\"name\":\"apple_pie\",\"servingSize\":\"1 slice\"}" -H "Content-Type: application/json" http://localhost:8080/RESTServices/rs/foods -v
+
+
+~~~~~~~~~~~~~~~~~
+Read (Get) All Foods
+~~~~~~~~~~~~~~~~~
+curl -X GET -H "Accept: application/json" http://localhost:8080/RESTServices/rs/foods -v
+curl -X GET -H "Accept: application/xml" http://localhost:8080/RESTServices/rs/foods -v
+
+
+~~~~~~~~~~~~~~~~~~~~
+Read (Get) a Single Food
+~~~~~~~~~~~~~~~~~~~~
+curl -X GET -H "Accept: application/xml" http://localhost:8080/RESTServices/rs/foods/onion -v
+
+
+~~~~~~~~~~~~
+Update a Food
+~~~~~~~~~~~~
+curl -X PUT --data-binary "<food><calories>75</calories><name>turnip</name><servingSize>3 slices</servingSize></food>" -H "Content-Type: application/xml" http://localhost:8080/RESTServices/rs/foods -v
+
+curl -X PUT --data-binary "{\"calories\":150,\"name\":\"apple_pie\",\"servingSize\":\"2 slices\"}" -H "Content-Type: application/json" http://localhost:8080/RESTServices/rs/foods -v
+
+
+~~~~~~~~~~~~
+Delete a Food
+~~~~~~~~~~~~
+curl -X DELETE http://localhost:8080/RESTServices/rs/foods/onion -v
+
