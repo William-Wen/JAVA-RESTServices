@@ -78,6 +78,10 @@ public class FoodRestService {
 	@DELETE
 	@Path("{name}")
 	public Response delete(@PathParam("name") String name) {
+		Food oFood = FoodManager.find(name);
+		if (oFood == null) {
+			throw new NotFoundException();
+		}
 		FoodManager.delete(name);
 		return Response.noContent().build();
 	}
