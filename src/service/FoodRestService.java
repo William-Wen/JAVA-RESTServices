@@ -3,6 +3,7 @@ package service;
 import java.net.URI;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
@@ -75,6 +76,7 @@ public class FoodRestService {
 		return Response.ok(oFoods).build();
 	}
 
+	@RolesAllowed({"admin",})
 	@DELETE
 	@Path("{name}")
 	public Response delete(@PathParam("name") String name) {
